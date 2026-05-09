@@ -11,7 +11,7 @@ def get_coordinate(registro):
     Returns:
         Un string con la coordenada del mapa
     """
-    pass  # Reemplazar con tu implementación
+    return registro[1]
 
 
 def convert_coordinate(coordenada):
@@ -24,7 +24,11 @@ def convert_coordinate(coordenada):
     Returns:
         Una tupla con los componentes individuales (ej: ("2", "A"))
     """
-    pass  # Reemplazar con tu implementación
+    lista = []
+    lista.append(coordenada[0])
+    lista.append(coordenada[1])
+    tupla = tuple(lista)
+    return tupla
 
 
 def create_record(registro_azara, registro_rui):
@@ -47,7 +51,14 @@ def create_record(registro_azara, registro_rui):
     Returns:
         Tupla combinada si las coordenadas coinciden, o "not a match" si no.
     """
-    pass  # Reemplazar con tu implementación
+    valor = registro_rui[1]
+    nuevoValor = valor[0] + valor[1]
+    if nuevoValor == registro_azara[1]:
+        coincidencia = (registro_azara[0], registro_azara[1], registro_rui[0], registro_rui[1], registro_rui[2])
+        tupla = tuple(coincidencia)
+        return tupla
+    else:
+        return "not a match"
 
 
 def sum_tuple(numeros):
@@ -68,7 +79,10 @@ def sum_tuple(numeros):
         sum_tuple((1, 2, 3, 4, 5)) -> 15
         sum_tuple(()) -> 0
     """
-    pass  # Reemplazar con tu implementación
+    suma = 0
+    for x in numeros:
+        suma += x
+    return suma
 
 
 def count_occurrences(tupla, elemento):
@@ -89,6 +103,11 @@ def count_occurrences(tupla, elemento):
         count_occurrences((1, 2, 2, 3, 2), 2) -> 3
         count_occurrences(('a', 'b', 'a'), 'c') -> 0
     """
+    coincidencia = 0
+    for x in tupla:
+        if elemento == x:
+            coincidencia += 1
+    return coincidencia
     pass  # Reemplazar con tu implementación
 
 
@@ -111,8 +130,14 @@ def find_index(tupla, elemento):
         find_index(('a', 'b', 'c', 'b'), 'b') -> 1
         find_index((1, 2, 3), 9) -> -1
     """
-    pass  # Reemplazar con tu implementación
-
+    longitud = len(tupla)
+    coincidencia = ""
+    for x in range(longitud):
+        if elemento == tupla[x]:
+            coincidencia = x
+            return coincidencia
+    if coincidencia == "":
+        return -1
 
 def filter_positives(numeros):
     """
@@ -129,4 +154,10 @@ def filter_positives(numeros):
         filter_positives((-3, 1, 0, 5, -2, 7)) -> (1, 5, 7)
         filter_positives((-1, -2, -3)) -> ()
     """
-    pass  # Reemplazar con tu implementación
+    longitud = len(numeros)
+    lista = []
+    for x in range(longitud):
+        if numeros[x] > 0:
+            lista.append(numeros[x])
+    tupla = tuple(lista)
+    return tupla
